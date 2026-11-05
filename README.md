@@ -92,13 +92,14 @@ Documento mestre acadêmico (CDD): [docs/GenJutsu_AI_CDD_Completo.md](docs/GenJu
 - `summary.html` — página pública `/s/CODIGO`
 - `admin.html` — escolha da sessão do Quest
 - `api/session.js` — JSON para o Unity/Quest (`?code=`)
+- `api/chat.js` — proxy do Corvo (Groq ou Qwen por `LLM_BASE_URL`). A chave fica na Vercel, não no APK. Contrato em [docs/unity-session.md](docs/unity-session.md#corvo--chat-do-assistente-apichat)
 - [docs/unity-session.md](docs/unity-session.md) — handshake Quest 3S
 
 O resumo do visitante descreve só clima e casa. A frase “N evento(s) de agenda…” só entra quando a fonte do dossiê é Google.
 
 `node test/personality.test.js` confere o fallback `Visitante` + código, o nome escrito quando existe, o e-mail vazio e a ausência dessa frase.
 
-`node --test test/guest-save.test.js test/zcea-profile.test.js test/session-api.test.mjs` confere o save sem login (sessão anônima, `profile_id`, código de 6 caracteres) e o JSON de `GET /api/session`.
+`node --test test/guest-save.test.js test/zcea-profile.test.js test/session-api.test.mjs test/chat-api.test.mjs` confere o save sem login (sessão anônima, `profile_id`, código de 6 caracteres) e o JSON de `GET /api/session`.
 
 ## Como verificar o visitante
 
